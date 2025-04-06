@@ -1,0 +1,19 @@
+//brute force-o(n^2)
+
+//hashmap to keep track of index else hashset will be enough-o(n)
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+        unordered_map<int,int> set;
+        for(int i=0;i<n;i++){
+            if(set.find(target-nums[i])!=set.end()){
+                return vector<int> {i,set[target-nums[i]]};
+            }
+            set[nums[i]]=i;
+        }
+
+        return vector<int> {};
+    }
+};
