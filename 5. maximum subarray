@@ -1,0 +1,21 @@
+// it just care about maximum
+// keep adding until it's less than 0
+// keep track of the maximum value
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n=nums.size();
+
+        int ans=INT_MIN;
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            ans=max(ans,sum);
+            sum=max(0,sum);
+        }
+
+        return ans;
+
+    }
+};
