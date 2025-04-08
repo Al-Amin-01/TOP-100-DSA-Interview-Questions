@@ -1,0 +1,33 @@
+// brute force - O(n^2)
+
+// keep track of the max and min value
+// if 0 make it ground
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int n = nums.size();
+        int ans=INT_MIN,mn=1,mx=1;
+
+        for(int i=0;i<n;i++){
+            if(nums[i]==0){
+                mx=1;
+                mn=1;
+                ans=max(ans,0);
+            }
+            else{
+
+                mx *= nums[i];
+                mn *= nums[i];
+
+                if(mx<mn) swap(mx,mn);
+                ans= max(ans,mx);
+                if(mx<0) mx=1;
+            }
+
+            
+        }
+
+        return ans;
+    }
+};
