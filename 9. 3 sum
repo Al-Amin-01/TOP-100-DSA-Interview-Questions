@@ -1,0 +1,36 @@
+// sort
+// take a traversal
+// then take a two pointer approach
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int n= nums.size();
+        set<vector<int>> s;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n-2;i++){
+            
+            int lo=i+1,hi=n-1;
+            while(lo<hi){
+                int sum=nums[lo]+nums[hi]+nums[i];
+                if(sum==0){
+                    s.insert({nums[i],nums[lo],nums[hi]});
+                    lo++;
+                    hi--;
+                }
+                else if(sum<0){
+                    lo++;
+                }
+                else hi--;
+            }
+        }
+
+        vector<vector<int>> ans;
+
+        for(auto x: s){
+            ans.push_back(x);
+        }
+
+        return ans;
+    }
+};
